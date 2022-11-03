@@ -1,14 +1,16 @@
 const pokemonName = document.querySelector(".pokemon__name");
 const pokemonNumber = document.querySelector(".pokemon__number");
 const pokemonImage = document.querySelector(".pokemon__image");
+const pokedex = document.querySelector(".pokedex")
 
 const form = document.querySelector(".form");
 const input = document.querySelector(".input__search");
 
 const btnPrev = document.querySelector(".btn-prev");
 const btnNext = document.querySelector(".btn-next");
+const btnShiny = document.querySelector(".shiny")
 
-let searchPokemon = 1
+let searchPokemon = 1, bShiny = false
 
 async function fetchPokemon(pokemon){
 
@@ -35,10 +37,16 @@ async function renderPokemon(pokemon){
         searchPokemon = data.id;
     
         sprite = data.sprites.versions['generation-v']['black-white'].animated.front_default;
+        if(bShiny){
+            sprite = data.sprites.versions['generation-v']['black-white'].animated.front_shiny;
+        }
         pokemonImage.style.height = '18%';
         pokemonImage.style.bottom = '55%';
         if(sprite == null){
             sprite = data.sprites.front_default;
+            if(bShiny){
+                sprite = data.sprites.front_shiny;
+            }
             pokemonImage.style.height = '25%';
             pokemonImage.style.bottom = '52.5%';
     
@@ -77,6 +85,17 @@ btnNext.addEventListener('click', ()=>{
         searchPokemon+=1;
         renderPokemon(searchPokemon)
     }
+})
+
+btnShiny.addEventListener('click', ()=>{
+    if(bShiny){
+        bShiny = false
+        pokedex.src = 'assets/imagens/pokedex.png'
+    }else{
+        bShiny = true
+        pokedex.src = 'assets/imagens/pokedex-s.png'
+    }
+    renderPokemon(searchPokemon)
 })
 
 renderPokemon(searchPokemon)

@@ -5,6 +5,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Oxanium', cursive;
+    
 }
 
 body{
@@ -24,6 +25,7 @@ main{
 .pokedex{
     width: 100%;
     max-width: 425px;
+    user-select: none;
 }
 
 .shiny{
@@ -86,6 +88,7 @@ main{
     transform: translateX(-57%);
     display: flex;
     gap: 20px;
+    user-select: none;
 }
 
 .button{

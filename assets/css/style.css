@@ -56,6 +56,41 @@ main{
     font-size: clamp(8px, 6vw, 20px);
 }
 
+.gender{
+    position: absolute;
+    top: 48%;
+    left: 59%;
+    display: flex;
+    gap: 10px;
+    width: 13%;
+}
+
+.male, .female{
+    border-radius: 50%;
+    width: 100%;
+    color: #fff;
+    border: 2px solid #333;
+    cursor: pointer;
+    user-select: none;
+}
+
+label{
+    cursor: pointer;
+}
+
+.male{
+    background-color: #8a1ae6;
+    scale: 1.1;
+}
+
+.female{
+    background-color: #ee2a2a;
+}
+
+.gender__radio{
+    display: none;
+}
+
 .pokemon__name{
     color: #3a444d;
     text-transform: capitalize;

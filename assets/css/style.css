@@ -71,7 +71,13 @@ main{
     left: 39%;
     display: flex;
     gap: 20%;
-    width: 13%;
+    width: 13%;/
+}
+@media (max-width:352px){
+    .gender{
+        left: 36%;
+        width: 18%;
+    }
 }
 
 .male, .female{

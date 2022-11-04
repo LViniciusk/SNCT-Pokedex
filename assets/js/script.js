@@ -15,10 +15,24 @@ const btnMale = document.querySelector(".male")
 const btnFemale = document.querySelector(".female")
 
 let searchPokemon = 1, bShiny = false, male = true, female = false
-let vtype1, vtype2
+let vtype1, vtype2, meme=false, Nmeme, Numeme
 
 async function fetchPokemon(pokemon){
 
+    switch(pokemon) {
+        case '13.984.356.982':
+            meme = true
+            Nmeme = 'gato'
+            Numeme = '4002'
+            break;
+        case '14.512':
+            meme = true
+            Nmeme = 'gustavo'
+            Numeme = '69'
+            break;
+        default:
+            meme = false
+    }
     const APIResponse = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
 
     if (APIResponse.status == 200){
@@ -98,6 +112,17 @@ async function renderPokemon(pokemon){
         vtype2 = data.types['1'].type.name
         type2.src = `assets/imagens/types/Icon_${vtype2}.webp`
         input.value = ''
+    }else if(meme){
+        pokemonImage.src = `assets/imagens/meme/${Nmeme}.png`
+
+        pokemonName.innerHTML = Nmeme;
+        pokemonNumber.innerHTML = Numeme;
+
+        type1.src = `assets/imagens/types/Icon_${vtype1}.webp`
+        type2.src = `assets/imagens/types/Icon_${vtype2}.webp`
+
+
+        input.value = ''
     }else{
         pokemonImage.style.display = 'none'
         pokemonNumber.innerHTML = '404'
@@ -118,12 +143,16 @@ btnPrev.addEventListener('click', ()=>{
     if(searchPokemon > 1){
         searchPokemon-=1
         renderPokemon(searchPokemon)
+    }else{
+        renderPokemon(1)
     }
 })
 btnNext.addEventListener('click', ()=>{
     if(searchPokemon < 905){
         searchPokemon+=1;
         renderPokemon(searchPokemon)
+    }else{
+        renderPokemon(905)
     }
 })
 

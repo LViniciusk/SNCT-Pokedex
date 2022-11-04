@@ -133,7 +133,7 @@ btnMale.addEventListener('click', ()=>{
         male = true
         female = false
         btnMale.style.scale = '1.1'
-        btnFemale.style.scale = '1'
+        btnFemale.style.scale = '0.9'
     }
     renderPokemon(searchPokemon)
 })
@@ -142,7 +142,7 @@ btnFemale.addEventListener('click', ()=>{
     if(!female){
         male = false
         female = true
-        btnMale.style.scale = '1'
+        btnMale.style.scale = '0.9'
         btnFemale.style.scale = '1.1'
     }
     renderPokemon(searchPokemon)

@@ -56,18 +56,27 @@ main{
     font-size: clamp(8px, 6vw, 20px);
 }
 
+.type{
+    position: absolute;
+    display: flex;
+    height: 4%;
+    bottom: 48.2%;
+    left: 20%;
+    gap: 10%;
+}
+
 .gender{
     position: absolute;
-    top: 48%;
-    left: 59%;
+    top: 23%;
+    left: 39%;
     display: flex;
-    gap: 10px;
+    gap: 20%;
     width: 13%;
 }
 
 .male, .female{
     border-radius: 50%;
-    width: 100%;
+    width: 50%;
     color: #fff;
     border: 2px solid #333;
     cursor: pointer;

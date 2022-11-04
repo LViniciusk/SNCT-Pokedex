@@ -2,6 +2,8 @@ const pokemonName = document.querySelector(".pokemon__name");
 const pokemonNumber = document.querySelector(".pokemon__number");
 const pokemonImage = document.querySelector(".pokemon__image");
 const pokedex = document.querySelector(".pokedex")
+const type1 = document.querySelector(".type1")
+const type2 = document.querySelector(".type2")
 
 const form = document.querySelector(".form");
 const input = document.querySelector(".input__search");
@@ -13,6 +15,7 @@ const btnMale = document.querySelector(".male")
 const btnFemale = document.querySelector(".female")
 
 let searchPokemon = 1, bShiny = false, male = true, female = false
+let vtype1, vtype2
 
 async function fetchPokemon(pokemon){
 
@@ -30,6 +33,8 @@ async function renderPokemon(pokemon){
     pokemonName.innerHTML = 'Loading...'
     pokemonNumber.innerHTML = ''
     pokemonImage.style.display = 'none'
+    type1.src = '#'
+    type2.src = '#'
     const data = await fetchPokemon(pokemon);
 
     if (data){
@@ -37,6 +42,7 @@ async function renderPokemon(pokemon){
         pokemonName.innerHTML = data.name;
         pokemonNumber.innerHTML = data.id;
         searchPokemon = data.id;
+
         if(male){
             sprite = data.sprites.versions['generation-v']['black-white'].animated.front_default;
             if(bShiny){
@@ -87,6 +93,10 @@ async function renderPokemon(pokemon){
             }
         }
         pokemonImage.src = sprite
+        vtype1 = data.types['0'].type.name
+        type1.src = `assets/imagens/types/Icon_${vtype1}.webp`
+        vtype2 = data.types['1'].type.name
+        type2.src = `assets/imagens/types/Icon_${vtype2}.webp`
         input.value = ''
     }else{
         pokemonImage.style.display = 'none'

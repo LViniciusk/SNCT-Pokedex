@@ -16,6 +16,21 @@ const btnShiny = document.querySelector(".shiny")
 const btnMale = document.querySelector(".male")
 const btnFemale = document.querySelector(".female")
 
+const btnModal = document.querySelector(".info__btn")
+const btnClose = document.querySelector(".info__close")
+const modal = document.querySelector(".info__box")
+const infoBack = document.querySelector(".info")
+
+btnModal.onclick = function(){
+    modal.style.display = 'block'
+    infoBack.style.display = 'block'
+}
+
+btnClose.onclick = function(){
+    modal.style.display = 'none'
+    infoBack.style.display = 'none'
+}
+
 let searchPokemon = 1, bShiny = false, male = true, female = false
 let vtype1, vtype2, meme=false, Nmeme, Numeme
 
@@ -163,6 +178,13 @@ async function renderPokemon(pokemon){
             tFemale.innerHTML = '?'
             btnMale.style.scale = '1'
             btnFemale.style.scale = '1'
+            pokemonImage.style.width = '56%'
+            pokemonImage.style.height = '25.3%'
+            pokemonImage.style.left = '53%'
+            pokemonImage.style.top = '22.5%'
+
+            pokemonImage.style.borderRadius = '6%'
+
 
         }else if('gato'){
             pokemonImage.style.scale = '1.2'

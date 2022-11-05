@@ -44,6 +44,7 @@ main{
     left: 50%;
     transform: translate(-63%, 20%);
     height: 18%;
+    user-select: none;
 }
 
 .pokemon__data{
@@ -63,6 +64,7 @@ main{
     bottom: 48.2%;
     left: 20%;
     gap: 10%;
+    user-select: none;
 }
 
 .type1,.type2{
@@ -110,6 +112,10 @@ label{
 .gender__radio{
     display: none;
 }
+.t__male, .t__female{
+    width: 100%;
+    padding: 1%;
+}
 
 .pokemon__name{
     color: #3a444d;
@@ -133,6 +139,7 @@ label{
     color: #3a444d;
     font-size: clamp(8px, 6vw, 1rem);
     box-shadow: -3px 4px 0 #888, -5px 7px 0 #333;
+    user-select: none;
 }
 
 .buttons{
@@ -172,8 +179,10 @@ label{
     height: 100%;
     overflow: auto;
     background: linear-gradient(to bottom, #00000000, #da6969d0);
-    z-index: 1;
-    display: none;
+    z-index: -1;
+    opacity: 0;
+    display: block;
+    transition: all 1s ease;
 }
 
 .info__box{
@@ -183,11 +192,19 @@ label{
     width: 88%;
     height: 20%;
     left: 6.5%;
-    bottom: 6.5%;
+    bottom: 4.5%;
     margin: 0 auto;
-    z-index: 2;
-    display: none;
+    z-index: -1;
+    display: block;
+    opacity: 0;
+    display: block;
+    user-select: none;
+    cursor: pointer;
+
+    transition: all 0.5s ease;
 }
+
+
 
 .info__btn{
     position: absolute;
@@ -201,7 +218,12 @@ label{
     
     scale: 0.9;
     cursor: pointer;
+
+    transition: all 0.8s ease;
 }
+
+
+
 
 .info__icon{
     height: 100%;

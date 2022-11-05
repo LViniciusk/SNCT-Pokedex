@@ -21,15 +21,11 @@ const btnClose = document.querySelector(".info__close")
 const modal = document.querySelector(".info__box")
 const infoBack = document.querySelector(".info")
 
-btnModal.onclick = function(){
-    modal.style.display = 'block'
-    infoBack.style.display = 'block'
-}
+const infoAudio = document.querySelector(".info__audio")
+const infoAudioBack = document.querySelector(".info__audio2")
+const shinyAudio = document.querySelector(".shiny__audio")
 
-btnClose.onclick = function(){
-    modal.style.display = 'none'
-    infoBack.style.display = 'none'
-}
+
 
 let searchPokemon = 1, bShiny = false, male = true, female = false
 let vtype1, vtype2, meme=false, Nmeme, Numeme
@@ -178,11 +174,12 @@ async function renderPokemon(pokemon){
             tFemale.innerHTML = '?'
             btnMale.style.scale = '1'
             btnFemale.style.scale = '1'
+            /*
             pokemonImage.style.width = '56%'
             pokemonImage.style.height = '25.3%'
             pokemonImage.style.left = '53%'
             pokemonImage.style.top = '22.5%'
-
+            */
             pokemonImage.style.borderRadius = '6%'
 
 
@@ -230,6 +227,8 @@ btnShiny.addEventListener('click', ()=>{
         pokedex.src = 'assets/imagens/pokedex.png'
     }else{
         bShiny = true
+        shinyAudio.volume = 0.1
+        shinyAudio.play()
         pokedex.src = 'assets/imagens/pokedex-s.png'
     }if(meme && bShiny){
         sprite =`assets/imagens/meme/${Nmeme}_shiny.png`
@@ -258,4 +257,29 @@ btnFemale.addEventListener('click', ()=>{
     }
     
 })
+
+btnModal.onclick = function(){
+    infoBack.style.zIndex = '1'
+    infoBack.style.opacity = '1'
+    modal.style.zIndex = '2'
+    modal.style.opacity = '1'
+    btnModal.style.transform =  'rotate(-360deg)'
+    infoAudio.volume = 0.12
+    infoAudio.play()
+
+    
+    modal.style.bottom = '6.5%'
+}
+
+modal.onclick = function(){
+    infoBack.style.zIndex = '-1'
+    infoBack.style.opacity = '0'
+    modal.style.zIndex = '-1'
+    modal.style.opacity = '0'
+    modal.style.bottom = '4.5%'
+    btnModal.style.transform =  'rotate(0deg)'
+    infoAudioBack.currentTime = 0.4
+    infoAudioBack.volume = 0.08
+    infoAudioBack.play()
+}
 renderPokemon(searchPokemon)

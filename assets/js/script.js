@@ -4,6 +4,8 @@ const pokemonImage = document.querySelector(".pokemon__image");
 const pokedex = document.querySelector(".pokedex")
 const type1 = document.querySelector(".type1")
 const type2 = document.querySelector(".type2")
+const tMale = document.querySelector(".t__male")
+const tFemale = document.querySelector(".t__female")
 
 const form = document.querySelector(".form");
 const input = document.querySelector(".input__search");
@@ -24,11 +26,33 @@ async function fetchPokemon(pokemon){
             meme = true
             Nmeme = 'gato'
             Numeme = '4002'
+            female = true; male = false
+            btnMale.style.scale = '0.9'
+            btnFemale.style.scale = '1.1'
             break;
         case '14.512':
             meme = true
-            Nmeme = 'gustavo'
+            Nmeme = 'yScroww'
             Numeme = '69'
+            female = false; male = true;
+            btnMale.style.scale = '1.1'
+            btnFemale.style.scale = '0.9'
+            break;
+        case '2.469':
+            meme = true
+            Nmeme = 'fire-chan'
+            Numeme = '24'
+            female = false; male = true;
+            btnMale.style.scale = '1.1'
+            btnFemale.style.scale = '0.9'
+            break;
+        case '69.420':
+            meme = true
+            Nmeme = 'ohomemsegredos'
+            Numeme = '??'
+            female = false; male = true;
+            btnMale.style.scale = '1.1'
+            btnFemale.style.scale = '0.9'
             break;
         default:
             meme = false
@@ -49,6 +73,10 @@ async function renderPokemon(pokemon){
     pokemonImage.style.display = 'none'
     type1.src = '#'
     type2.src = '#'
+    btnMale.style.background = '#8a1ae6'
+    tMale.innerHTML = '♂'
+    btnFemale.style.background = '#ee2a2a'
+    tFemale.innerHTML = '♀'
     const data = await fetchPokemon(pokemon);
 
     if (data){
@@ -118,8 +146,17 @@ async function renderPokemon(pokemon){
         pokemonName.innerHTML = Nmeme;
         pokemonNumber.innerHTML = Numeme;
 
-        type1.src = `assets/imagens/types/Icon_${vtype1}.webp`
-        type2.src = `assets/imagens/types/Icon_${vtype2}.webp`
+        type1.src = `assets/imagens/types/comunidade.png`
+        if(Nmeme = 'ohomemsegredos'){
+            type2.src = `assets/imagens/types/segredo.png`
+            btnMale.style.background = '#333'
+            tMale.innerHTML = '?'
+            btnFemale.style.background = '#333'
+            tFemale.innerHTML = '?'
+            btnMale.style.scale = '1'
+            btnFemale.style.scale = '1'
+
+        }
 
 
         input.value = ''
@@ -127,6 +164,7 @@ async function renderPokemon(pokemon){
         pokemonImage.style.display = 'none'
         pokemonNumber.innerHTML = '404'
         pokemonName.innerHTML = 'Not Found :('
+        input.value = ''
     }
 
     
@@ -143,7 +181,7 @@ btnPrev.addEventListener('click', ()=>{
     if(searchPokemon > 1){
         searchPokemon-=1
         renderPokemon(searchPokemon)
-    }else{
+    }else if(searchPokemon < 1 || searchPokemon > 905){
         renderPokemon(1)
     }
 })
@@ -151,7 +189,7 @@ btnNext.addEventListener('click', ()=>{
     if(searchPokemon < 905){
         searchPokemon+=1;
         renderPokemon(searchPokemon)
-    }else{
+    }else if(searchPokemon > 905 || searchPokemon < 1){
         renderPokemon(905)
     }
 })

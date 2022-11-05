@@ -65,6 +65,10 @@ main{
     gap: 10%;
 }
 
+.type1,.type2{
+    border-radius: 50%;
+}
+
 .gender{
     position: absolute;
     top: 23%;

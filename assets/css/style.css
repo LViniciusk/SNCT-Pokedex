@@ -215,6 +215,7 @@ label{
     border-radius: 50%;
     padding: 1.2%;
     border: 3px solid black;
+    user-select: none;
     
     scale: 0.9;
     cursor: pointer;

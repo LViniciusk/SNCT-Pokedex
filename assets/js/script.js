@@ -87,11 +87,15 @@ async function renderPokemon(pokemon){
 
         if(male){
             sprite = data.sprites.versions['generation-v']['black-white'].animated.front_default;
+            btnMale.style.scale = '1.1'
+            btnFemale.style.scale = '0.9'
             if(bShiny){
                 sprite = data.sprites.versions['generation-v']['black-white'].animated.front_shiny;
             }
         }else if(female){
             sprite = data.sprites.versions['generation-v']['black-white'].animated.front_female;
+            btnMale.style.scale = '0.9'
+            btnFemale.style.scale = '1.1'
             if(sprite == null){
                 sprite = data.sprites.versions['generation-v']['black-white'].animated.front_default;
             }
@@ -147,12 +151,12 @@ async function renderPokemon(pokemon){
         pokemonNumber.innerHTML = Numeme;
 
         type1.src = `assets/imagens/types/comunidade.png`
-        type2.src = '#'
         if(Nmeme == 'ohomemsegredos'){
-            type2.src = `assets/imagens/types/segredo.png`
+            type1.src = `assets/imagens/types/segredo.png`
+            type2.src = `assets/imagens/types/comunidade.png`
             btnMale.style.background = '#333'
-            tMale.innerHTML = '?'
             btnFemale.style.background = '#333'
+            tMale.innerHTML = '?'
             tFemale.innerHTML = '?'
             btnMale.style.scale = '1'
             btnFemale.style.scale = '1'
@@ -202,8 +206,11 @@ btnShiny.addEventListener('click', ()=>{
     }else{
         bShiny = true
         pokedex.src = 'assets/imagens/pokedex-s.png'
+    }if(meme){
+        pokemonImage.src = `assets/imagens/meme/${Nmeme}_shiny.png`
+    }else{
+        renderPokemon(searchPokemon)
     }
-    renderPokemon(searchPokemon)
 })
 
 btnMale.addEventListener('click', ()=>{

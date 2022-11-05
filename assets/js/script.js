@@ -21,6 +21,7 @@ let vtype1, vtype2, meme=false, Nmeme, Numeme
 
 async function fetchPokemon(pokemon){
 
+    searchPokemon = -1
     switch(pokemon) {
         case '13.984.356.982':
             meme = true
@@ -143,7 +144,7 @@ async function renderPokemon(pokemon){
         type1.src = `assets/imagens/types/Icon_${vtype1}.webp`
         vtype2 = data.types['1'].type.name
         type2.src = `assets/imagens/types/Icon_${vtype2}.webp`
-        input.value = ''
+
     }else if(meme){
         pokemonImage.style.display = 'block'
         pokemonImage.src = `assets/imagens/meme/${Nmeme}.png`
@@ -167,12 +168,10 @@ async function renderPokemon(pokemon){
         }
 
 
-        input.value = ''
     }else{
         pokemonImage.style.display = 'none'
         pokemonNumber.innerHTML = '404'
         pokemonName.innerHTML = 'Not Found :('
-        input.value = ''
     }
 
     
@@ -182,22 +181,22 @@ form.addEventListener('submit', (event)=>{
     event.preventDefault()
 
     renderPokemon(input.value.toLowerCase())
-    
+    input.value = ''
 })
 
 btnPrev.addEventListener('click', ()=>{
-    if(searchPokemon > 1){
+    if(searchPokemon > 1 && searchPokemon < 905){
         searchPokemon-=1
         renderPokemon(searchPokemon)
-    }else if(searchPokemon < 1 || searchPokemon > 905){
+    }else{
         renderPokemon(1)
     }
 })
 btnNext.addEventListener('click', ()=>{
-    if(searchPokemon < 905){
+    if(searchPokemon < 905 && searchPokemon > 1){
         searchPokemon+=1;
         renderPokemon(searchPokemon)
-    }else if(searchPokemon > 905 || searchPokemon < 1){
+    }else{
         renderPokemon(905)
     }
 })
@@ -209,30 +208,31 @@ btnShiny.addEventListener('click', ()=>{
     }else{
         bShiny = true
         pokedex.src = 'assets/imagens/pokedex-s.png'
-    }if(meme){
-        pokemonImage.src = `assets/imagens/meme/${Nmeme}_shiny.png`
+    }if(meme && bShiny){
+        sprite =`assets/imagens/meme/${Nmeme}_shiny.png`
+        pokemonImage.src = sprite
+    }else if(meme && !bShiny){
+        pokemonImage.src = `assets/imagens/meme/${Nmeme}.png`
     }else{
         renderPokemon(searchPokemon)
     }
 })
 
 btnMale.addEventListener('click', ()=>{
-    btnMale.style.scale = '1.1'
-    btnFemale.style.scale = '0.9'
     if(!male){
         male = true
         female = false
+        renderPokemon(searchPokemon)
     }
-    renderPokemon(searchPokemon)
+    
 })
 
 btnFemale.addEventListener('click', ()=>{
-    btnMale.style.scale = '0.9'
-    btnFemale.style.scale = '1.1'
     if(!female){
         male = false
         female = true
+        renderPokemon(searchPokemon)
     }
-    renderPokemon(searchPokemon)
+    
 })
 renderPokemon(searchPokemon)

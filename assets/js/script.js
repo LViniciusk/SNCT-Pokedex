@@ -147,7 +147,8 @@ async function renderPokemon(pokemon){
         pokemonNumber.innerHTML = Numeme;
 
         type1.src = `assets/imagens/types/comunidade.png`
-        if(Nmeme = 'ohomemsegredos'){
+        type2.src = '#'
+        if(Nmeme == 'ohomemsegredos'){
             type2.src = `assets/imagens/types/segredo.png`
             btnMale.style.background = '#333'
             tMale.innerHTML = '?'
@@ -206,21 +207,21 @@ btnShiny.addEventListener('click', ()=>{
 })
 
 btnMale.addEventListener('click', ()=>{
+    btnMale.style.scale = '1.1'
+    btnFemale.style.scale = '0.9'
     if(!male){
         male = true
         female = false
-        btnMale.style.scale = '1.1'
-        btnFemale.style.scale = '0.9'
     }
     renderPokemon(searchPokemon)
 })
 
 btnFemale.addEventListener('click', ()=>{
+    btnMale.style.scale = '0.9'
+    btnFemale.style.scale = '1.1'
     if(!female){
         male = false
         female = true
-        btnMale.style.scale = '0.9'
-        btnFemale.style.scale = '1.1'
     }
     renderPokemon(searchPokemon)
 })

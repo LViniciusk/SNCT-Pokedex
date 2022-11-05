@@ -258,7 +258,7 @@ btnFemale.addEventListener('click', ()=>{
     
 })
 
-btnModal.onclick = function(){
+btnModal.addEventListener('click', ()=>{
     infoBack.style.zIndex = '1'
     infoBack.style.opacity = '1'
     modal.style.zIndex = '2'
@@ -269,9 +269,10 @@ btnModal.onclick = function(){
 
     
     modal.style.bottom = '6.5%'
-}
+    
+})
 
-modal.onclick = function(){
+modal.addEventListener('click', ()=>{
     infoBack.style.zIndex = '-1'
     infoBack.style.opacity = '0'
     modal.style.zIndex = '-1'
@@ -280,6 +281,8 @@ modal.onclick = function(){
     btnModal.style.transform =  'rotate(0deg)'
     infoAudioBack.currentTime = 0.4
     infoAudioBack.volume = 0.08
-    infoAudioBack.play()
-}
+    //infoAudioBack.play()
+    
+})
+
 renderPokemon(searchPokemon)

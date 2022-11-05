@@ -145,6 +145,7 @@ async function renderPokemon(pokemon){
         type2.src = `assets/imagens/types/Icon_${vtype2}.webp`
         input.value = ''
     }else if(meme){
+        pokemonImage.style.display = 'block'
         pokemonImage.src = `assets/imagens/meme/${Nmeme}.png`
 
         pokemonName.innerHTML = Nmeme;
@@ -161,6 +162,8 @@ async function renderPokemon(pokemon){
             btnMale.style.scale = '1'
             btnFemale.style.scale = '1'
 
+        }else if('gato'){
+            pokemonImage.style.scale = '1.2'
         }
 
 

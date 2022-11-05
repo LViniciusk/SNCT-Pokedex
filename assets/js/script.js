@@ -72,6 +72,7 @@ async function renderPokemon(pokemon){
     pokemonName.innerHTML = 'Loading...'
     pokemonNumber.innerHTML = ''
     pokemonImage.style.display = 'none'
+    pokemonImage.style.scale = '1'
     type1.src = '#'
     type2.src = '#'
     btnMale.style.background = '#8a1ae6'
@@ -185,18 +186,18 @@ form.addEventListener('submit', (event)=>{
 })
 
 btnPrev.addEventListener('click', ()=>{
-    if(searchPokemon > 1 && searchPokemon < 905){
+    if(searchPokemon > 1){
         searchPokemon-=1
         renderPokemon(searchPokemon)
-    }else{
+    }else if(searchPokemon < 1 || searchPokemon > 905){
         renderPokemon(1)
     }
 })
 btnNext.addEventListener('click', ()=>{
-    if(searchPokemon < 905 && searchPokemon > 1){
+    if(searchPokemon < 905){
         searchPokemon+=1;
         renderPokemon(searchPokemon)
-    }else{
+    }else if(searchPokemon > 905 || searchPokemon < 1){
         renderPokemon(905)
     }
 })

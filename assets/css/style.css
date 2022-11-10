@@ -182,7 +182,7 @@ label{
     z-index: -1;
     opacity: 0;
     display: block;
-    transition: all 1s ease;
+    transition: opacity 1s ease;
 }
 
 .info__box{

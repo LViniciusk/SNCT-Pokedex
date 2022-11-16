@@ -12,6 +12,8 @@ body{
     text-align: center;
     background: linear-gradient(to bottom, #6ab7f5, #fff);
     min-height: 100vh;
+    height: 100vh;
+    max-height: 100vh;
 }
 
 main{
@@ -198,6 +200,16 @@ label{
     cursor: pointer;
 
     transition: all 0.5s ease;
+}
+
+.info__text{
+    text-transform: capitalize;
+    padding-top: 1%;
+    padding-left: 2%;
+    text-align: left;
+    max-width: 100%;
+    max-height: 100%;
+    font-size: clamp(1px, 3.7vw, 17.3px);
 }
 
 

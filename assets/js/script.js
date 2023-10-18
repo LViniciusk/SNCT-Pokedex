@@ -247,15 +247,16 @@ btnPrev.addEventListener('click', () => {
     if (searchPokemon > 1) {
         searchPokemon -= 1
         renderPokemon(searchPokemon)
-    } else if (searchPokemon < 1 || searchPokemon > 905) {
+    } else if (searchPokemon < 1) {
         renderPokemon(1)
     }
 })
 btnNext.addEventListener('click', () => {
-        searchPokemon += 1;
-        renderPokemon(searchPokemon)
     if (searchPokemon < 1) {
         renderPokemon(1)
+    }else{
+        searchPokemon += 1;
+        renderPokemon(searchPokemon)
     }
 })
 

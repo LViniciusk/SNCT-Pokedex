@@ -37,7 +37,6 @@ let vtype1, vtype2, meme = false, Nmeme, Numeme, soloMale, soloFem
 
 async function fetchPokemon(pokemon) {
 
-    searchPokemon = -1
     switch (pokemon) {
         case '13.984.356.982':
             meme = true

@@ -212,12 +212,12 @@ async function renderPokemon(pokemon) {
             tFemale.innerHTML = '?'
             btnMale.style.scale = '1'
             btnFemale.style.scale = '1'
-            /*
+            /**/
             pokemonImage.style.width = '56%'
             pokemonImage.style.height = '25.3%'
             pokemonImage.style.left = '53%'
             pokemonImage.style.top = '22.5%'
-            */
+            /**/
             pokemonImage.style.borderRadius = '6%'
 
 

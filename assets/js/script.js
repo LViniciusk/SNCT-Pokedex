@@ -34,6 +34,7 @@ const shinyAudio = document.querySelector(".shiny__audio")
 
 let searchPokemon = 1, bShiny = false, male = true, female = false
 let vtype1, vtype2, meme = false, Nmeme, Numeme, soloMale, soloFem
+let count = 1000
 
 async function fetchPokemon(pokemon) {
 
@@ -98,6 +99,7 @@ async function renderPokemon(pokemon) {
     const data = await fetchPokemon(pokemon);
 
     if (data) {
+        count = data.count;
         pokemonImage.style.display = 'block';
         pokemonName.innerHTML = data.name;
         pokemonNumber.innerHTML = data.id;
@@ -253,7 +255,7 @@ btnPrev.addEventListener('click', () => {
 btnNext.addEventListener('click', () => {
     if (searchPokemon < 1) {
         renderPokemon(1)
-    }else{
+    }else if(searchPokemon < count){
         searchPokemon += 1;
         renderPokemon(searchPokemon)
     }
